@@ -205,4 +205,4 @@ $ ->
     else
       root.display_all()
 
-  d3.csv "data/gates_money.csv", render_vis
+  d3.csv "data/value.csv", render_vis
