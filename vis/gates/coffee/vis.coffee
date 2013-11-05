@@ -12,9 +12,9 @@ class BubbleChart
     # used
     @center = {x: @width / 2, y: @height / 2}
     @year_centers = {
-      "2008": {x: @width / 3, y: @height / 2},
-      "2009": {x: @width / 2, y: @height / 2},
-      "2010": {x: 2 * @width / 3, y: @height / 2}
+      "Grad": {x: @width / 3, y: @height / 2},
+      "Open": {x: @width / 2, y: @height / 2},
+      "Female": {x: 2 * @width / 3, y: @height / 2}
     }
 
     # used when setting up force and
@@ -157,7 +157,7 @@ class BubbleChart
 
   # Method to display year titles
   display_years: () =>
-    years_x = {"2008": 160, "2009": @width / 2, "2010": @width - 160}
+    years_x = {"Grad": 160, "Open": @width / 2, "Female": @width - 160}
     years_data = d3.keys(years_x)
     years = @vis.selectAll(".years")
       .data(years_data)
@@ -169,15 +169,15 @@ class BubbleChart
       .attr("text-anchor", "middle")
       .text((d) -> d)
 
-  # Method to hide year titiles
+  # Method to hide year titles
   hide_years: () =>
     years = @vis.selectAll(".years").remove()
 
   show_details: (data, i, element) =>
     d3.select(element).attr("stroke", "black")
-    content = "<span class=\"name\">Title:</span><span class=\"value\"> #{data.name}</span><br/>"
-    content +="<span class=\"name\">Amount:</span><span class=\"value\"> $#{addCommas(data.value)}</span><br/>"
-    content +="<span class=\"name\">Year:</span><span class=\"value\"> #{data.year}</span>"
+    content = "<span class=\"name\">Name:</span><span class=\"value\"> #{data.name}</span><br/>"
+    content +="<span class=\"name\">Value:</span><span class=\"value\"> $#{addCommas(data.value)}</span><br/>"
+    content +="<span class=\"name\">Type:</span><span class=\"value\"> #{data.year}</span>"
     @tooltip.showTooltip(content,d3.event)
 
 
